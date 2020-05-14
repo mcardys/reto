@@ -1,0 +1,381 @@
+// 20200514091755
+// http://localhost:8080/v2/api-docs
+
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Este api permite acortar urls",
+    "version": "1.0.0",
+    "title": "url shorter",
+    "contact": {
+      "email": "apiteam@swagger.io"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/v2",
+  "tags": [
+    {
+      "name": "acortador-api-controller",
+      "description": "the acortador API"
+    },
+    {
+      "name": "proxy-api-controller",
+      "description": "the proxy API"
+    },
+    {
+      "name": "masive-api-controller",
+      "description": "the masive API"
+    }
+  ],
+  "paths": {
+    "/v2/acortador": {
+      "post": {
+        "tags": [
+          "url"
+        ],
+        "summary": "este es un ejemplo!",
+        "operationId": "ejemplo",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Genera unaurl acortada",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Body"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/InlineResponse201"
+            }
+          },
+          "201": {
+            "description": "creado",
+            "schema": {
+              "$ref": "#/definitions/InlineResponse201"
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v2/alargador": {
+      "post": {
+        "tags": [
+          "url"
+        ],
+        "summary": "este es un ejemplo!",
+        "operationId": "alargador",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "develve full url",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Body"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "schema": {
+              "$ref": "#/definitions/InlineResponse200"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v2/masive": {
+      "post": {
+        "tags": [
+          "masive"
+        ],
+        "summary": "retorna ticket",
+        "description": "este servicio devuelve un ticket para el proceso batch de urls",
+        "operationId": "postMassive",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/InlineResponse2011"
+            }
+          },
+          "201": {
+            "description": "ok",
+            "schema": {
+              "$ref": "#/definitions/InlineResponse2011"
+            }
+          },
+          "400": {
+            "description": "parametros incorrectos"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v2/masive/{ticket}": {
+      "get": {
+        "tags": [
+          "masive"
+        ],
+        "summary": "retorna configuracion del proxy",
+        "description": "este servicio devuelve el archivo para configurar el proxy",
+        "operationId": "getMasssive",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "text/plain"
+        ],
+        "parameters": [
+          {
+            "name": "ticket",
+            "in": "path",
+            "description": "develve texto plano ",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          },
+          "400": {
+            "description": "parametros incorrectos"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "head": {
+        "tags": [
+          "masive"
+        ],
+        "summary": "retorna configuracion del proxy",
+        "description": "este servicio devuelve el archivo para configurar el proxy",
+        "operationId": "headMasssive",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "text/plain"
+        ],
+        "parameters": [
+          {
+            "name": "ticket",
+            "in": "path",
+            "description": "develve texto plano ",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "102": {
+            "description": "en proceso"
+          },
+          "200": {
+            "description": "ok"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "parametros incorrectos"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/v2/proxy": {
+      "get": {
+        "tags": [
+          "proxy"
+        ],
+        "summary": "retorna configuracion del proxy",
+        "description": "este servicio devuelve el archivo para configurar el proxy",
+        "operationId": "proxy",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "text/plain"
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v2/url": {
+      "delete": {
+        "tags": [
+          "url"
+        ],
+        "summary": "bloquea una url",
+        "operationId": "locked",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Body"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "creado",
+            "schema": {
+              "$ref": "#/definitions/InlineResponse201"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Body": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "example": "mercadolibre.com.ar/watch?dlm123elsws"
+        }
+      }
+    },
+    "InlineResponse200": {
+      "type": "object",
+      "properties": {
+        "longUrl": {
+          "type": "string",
+          "example": "mercadolibre.com.ar/watch?dlm123elsws"
+        }
+      }
+    },
+    "InlineResponse201": {
+      "type": "object",
+      "properties": {
+        "shortUrl": {
+          "type": "string",
+          "example": "me.li/123456"
+        }
+      }
+    },
+    "InlineResponse2011": {
+      "type": "object",
+      "properties": {
+        "ticket": {
+          "type": "string",
+          "example": "20324525645"
+        }
+      }
+    }
+  }
+}
