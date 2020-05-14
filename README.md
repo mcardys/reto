@@ -31,7 +31,7 @@ _los contratos cumplen con los requerimientos_
 
 ### Y las pruebas de estilo de codificación ⌨️
 
-_No pasa chequeo de codigo estatico ya que en determinados controllers se utilizan mas de 2 if consecutivos _
+_No pasa chequeo de codigo estatico ya que utilizan mas de 2 if consecutivos (hecho aproposito para seguir la logica) _
 
 ```
  if (accept != null && accept.contains("application/json")) {
